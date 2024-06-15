@@ -31,6 +31,11 @@ clean-targets:         # directories to be removed by `dbt clean`
 # files using the `{{ config(...) }}` macro.
 models:
   dbt_company:
-    # Config indicated by + and applies to all files under models/example/
-    example:
-      +materialized: view
+    # Config indicated by + and applies to all files under models/example/we have changed from example to staging
+    staging:
+      +materialized: view 
+      +schema: staging
+      description: 'I have added a custom schema it will take as set in profiles.yml as LTI + Staging
+                    to remove this i have added a macro from dbt just to get staging'
+      snowflake_source:
+       +materialized: table

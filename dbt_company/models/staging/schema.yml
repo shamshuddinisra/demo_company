@@ -19,3 +19,12 @@ models:
         data_tests:
           - unique
           - not_null
+
+  - name: snowflake_sample_data_store_data
+    description: "Store data table"
+    columns:
+      - name: SS_CUSTOMER_SK
+        description: "The primary key for this table"
+        data_tests:
+          - unique
+          - not_null
