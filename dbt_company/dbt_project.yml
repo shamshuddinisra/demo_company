@@ -22,6 +22,13 @@ clean-targets:         # directories to be removed by `dbt clean`
   - "target"
   - "dbt_packages"
 
+#adding hooks before running sny model the below gets excuted first u can also add macross
+#on-run-start: "insert into DBT_PRACTICE_COMPANY.STAGING.DBT_AUDITS (audit_type) values ('run_start');"
+#on-run-end: "insert into DBT_PRACTICE_COMPANY.STAGING.DBT_AUDITS (audit_type) values ('run_end'); "
+#comented above and created a macro 
+on-run-start: "{{ insert_audit('run_start') }}"
+on-run-end: "{{ insert_audit('run_end') }}"
+
 
 # Configuring models
 # Full documentation: https://docs.getdbt.com/docs/configuring-models
