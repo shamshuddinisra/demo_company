@@ -46,3 +46,7 @@ models:
                     to remove this i have added a macro from dbt just to get staging'
       snowflake_source:
        +materialized: table
+    
+    Marts:
+      +materialized: table 
+      +schema: marts

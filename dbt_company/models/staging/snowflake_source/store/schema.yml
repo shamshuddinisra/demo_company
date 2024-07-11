@@ -2,8 +2,6 @@ version: 2
 
 # Source Freshness
 # Default timing-
-# 12 hour Warning/ 24 hour error on CRM and ZUORA
-# 24 hour Warning/ 36 hour error on MI9, FLATFILES, PSFS
 # No Freshness check if no date is available or infrequent updates
 
 # loaded_at_field is standard "Update Date" or most recently updated date field
@@ -17,6 +15,5 @@ sources:
       - name: STORE_SALES
         description: 'Store sales data'
         freshness:
-          warn_after: { count: 24, period: hour }
-          error_after: { count: 36, period: hour }
-      
+          warn_after: { count: 365, period: day }
+          error_after: { count: 400, period: day }

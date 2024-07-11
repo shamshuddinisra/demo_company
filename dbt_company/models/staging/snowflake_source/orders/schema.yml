@@ -1,0 +1,29 @@
+version: 2
+
+# Source Freshness
+# Default timing-
+# No Freshness check if no date is available or infrequent updates
+
+# loaded_at_field is standard "Update Date" or most recently updated date field
+
+sources:
+  - name: SNOWFLAKE_SAMPLE_DATA
+    description: 'Source data taking from snowflake '
+    database: SNOWFLAKE_SAMPLE_DATA
+    schema: TPCH_SF1
+    tables:
+      - name: orders
+        description: 'Orders data from different schema'
+        columns:
+          - name: o_orderkey
+            data_tests: 
+            - unique
+            - not_null
+      - name: lineitem
+        columns: 
+         - name: l_orderkey
+           data_tests: 
+            - relationships:
+               to: source('SNOWFLAKE_SAMPLE_DATA','orders')
+               field: o_orderkey
+      
